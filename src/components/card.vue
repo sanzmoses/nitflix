@@ -40,6 +40,7 @@ export default {
 .uk-card {
     max-width: 300px;
     transition: all 0.4s ease;
+    cursor: pointer;
 
     .uk-card-media {
         overflow: hidden;
