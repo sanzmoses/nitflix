@@ -5,8 +5,9 @@
             <button class="uk-modal-close-default" type="button" uk-close></button>
 
             <div class="media-top">
-                <img :src="`https://picsum.photos/id/78${movie.id || 1}/800/500`" alt="" uk-img>
+                <img :src="`https://picsum.photos/id/${movie.id || 1}/800/500`" alt="" uk-img>
 
+                <h1 class="movie-title">{{ movie.title }}</h1>
                 <div class="dark-fade-overlay"></div>
                 <div class="modal-buttons">
                     <button class="uk-button uk-button-default"><span uk-icon="play"></span> Play</button>
@@ -27,10 +28,8 @@
                     </div> 
                     <div class="uk-width-1-3">
                         <p class="more-info">
-                            <span class="title">Cast:</span>
-                            <span>Me</span>
-                            <span>You</span>
-                            <span>Us</span>
+                            <span class="title">Tags:</span>
+                            <span v-for="tag in movie.tags" :key="'tag-'+tag">{{ tag }}</span>
                         </p>
                     </div> 
                 </div>
@@ -78,6 +77,13 @@ export default {
             width: 100%;
             height: 100%;
             max-width: 100%;
+        }
+
+        .movie-title {
+            bottom: 70px;
+            color: @black;
+            z-index: 100;
+            font-size: 50px;
         }
 
         .modal-buttons {
@@ -133,9 +139,13 @@ export default {
         }
 
         .more-info {
+            display: flex;
+            flex-wrap: wrap;
+            
             span {
                 margin-right: 5px;
-
+                text-transform: capitalize;
+                
                 &::after {
                     content: ',';
                 }
@@ -149,6 +159,7 @@ export default {
 
                 &.title {
                     font-weight: bold;
+                    
                     &::after {
                         display: none;
                     }

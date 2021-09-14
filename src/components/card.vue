@@ -1,7 +1,7 @@
 <template>
     <div class="uk-card">
         <div class="uk-card-media">
-            <img :src="`https://picsum.photos/id/78${movie.id}/300/200`" alt="">
+            <img :src="`https://picsum.photos/id/${movie.id}/300/200`" alt="">
         </div>
     </div>
 </template>
@@ -25,6 +25,8 @@ export default {
 
     .uk-card-media {
         overflow: hidden;
+        position: relative;
+
         img {
             object-fit: cover;
             width: 100%;
@@ -44,5 +46,6 @@ export default {
             opacity: 1;
         }
     }
+    
 }
 </style>

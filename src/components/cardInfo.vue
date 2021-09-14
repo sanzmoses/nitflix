@@ -1,7 +1,8 @@
 <template>
     <div class="card-info">
         <div class="uk-card-media">
-            <img :src="`https://picsum.photos/id/78${movie.id}/300/200`" alt="">
+            <img :src="`https://picsum.photos/id/${movie.id}/300/200`" alt="">
+            <h3 class="movie-title">{{ movie.title }}</h3>
         </div>
         <div class="card-body">
             <div class="card-buttons">
@@ -47,7 +48,7 @@ export default {
 .card-info {
     position: absolute !important;
     z-index: 99;
-    transform: translate(-50px, -90px);
+    transform: translate(-50px, -120px);
     width: 400px;
     box-shadow: 0px 1px 10px 0px fade(@gray, 40%);
 
@@ -58,6 +59,8 @@ export default {
 
     .uk-card-media {
         overflow: hidden;
+        position: relative;
+
         img {
             object-fit: cover;
             width: 100%;
@@ -104,6 +107,8 @@ export default {
         .tags {
             p {
                 margin-right: 5px;
+                text-transform: capitalize;
+                
                 &::after {
                     content: '·';
                     margin-left: 5px;
