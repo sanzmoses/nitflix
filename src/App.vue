@@ -48,7 +48,16 @@ export default {
     Modal,
     CardInfo
   },
-  
+  mounted() {
+    let vueApp = document.getElementById('app')
+    const slider = document.querySelector('[uk-slider]')
+    // console.log('vueapp', vueApp);
+    vueApp.addEventListener('click', evt => {
+      if(evt.target.contains(slider)) {
+        this.openMovieId = null;
+      }
+    })
+  },
   data() {
     return {
       movies: [
