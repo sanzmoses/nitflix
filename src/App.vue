@@ -5,12 +5,16 @@
   <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
       <ul class="uk-slider-items">
           <li v-for="movie in movies" :key="'card-'+movie.id">
+              <CardInfo v-show="movie.id == openMovieId" :movie="movie" />
               <Card @click="open(movie)" :movie="movie" />
           </li>
       </ul>
+
+      <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
   </div>
 
-  <div class="header-title"><h4>Popular Movies</h4></div>
+  <!-- <div class="header-title"><h4>Popular Movies</h4></div>
   <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
       <ul class="uk-slider-items">
           <li v-for="movie in movies" :key="'card-'+movie.id">
@@ -26,7 +30,7 @@
               <Card :movie="movie" />
           </li>
       </ul>
-  </div>
+  </div> -->
 
   <Modal :movie="movie_details"/>
 
@@ -34,15 +38,17 @@
 
 <script>
 import Card from './components/card.vue'
+import CardInfo from './components/cardInfo.vue'
 import Modal from './components/modal.vue'
-import UIkit from 'uikit';
 
 export default {
   name: 'App',
   components: {
     Card,
-    Modal
+    Modal,
+    CardInfo
   },
+  
   data() {
     return {
       movies: [
@@ -57,18 +63,19 @@ export default {
         { id: 9, title: 'Moses', rating: '16+', time: '2h 1m', tags: ['Horror', 'Thriller']},
         { id: 0, title: 'Noah', rating: '18+', time: '1h 30m', tags: ['Romance', 'Thriller']},
       ],
-      openModal: false,
-      movie_details: { id: 1, title: 'Avengers', rating: '16+', time: '2h 1m', tags: ['Asian Action', 'Suspense']}
+      movie_details: { id: 1, title: 'Avengers', rating: '16+', time: '2h 1m', tags: ['Asian Action', 'Suspense']},
+      openMovieId: null, 
     }
   },
   methods: {
     open(movie) {
+      // console.log(movie.id);
+      this.openMovieId = movie.id;
       this.movie_details = movie;
-
-      setTimeout(() => {
-        UIkit.modal('#modal-center').show();
-      }, 500)
     },
+    // openModal() {
+    //   UIkit.modal('#modal-center').show();
+    // }
   }
 }
 </script>
@@ -88,6 +95,7 @@ img {
   margin-top: 60px;
   width: 100%;
   overflow: hidden;
+  height: 100vh;
 }
 
 .header-title {
@@ -99,6 +107,6 @@ img {
 }
 
 .uk-slider {
-  overflow: visible;
+  overflow: visible !important;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
-    <button class="fab" :style="{width: size, height: size}">
+    <button :class="['fab', {dark}]" :style="{width: size, height: size}">
         <span :uk-icon="name"></span>
     </button>
 </template>
 
 <script>
 export default {
-    props: ['name', 'size']
+    props: ['name', 'size', 'dark']
 }
 </script>
 
@@ -28,6 +28,22 @@ export default {
         border-color: @black;
         span {
             color: white;
+        }
+    }
+
+    &.dark {
+        background: fade(@black, 50%);
+
+        span {
+            color: white;
+        }
+
+        &:hover {
+            background: @black;
+            border-color: @black;
+            span {
+                color: white;
+            }
         }
     }
 }
