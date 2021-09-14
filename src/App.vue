@@ -88,7 +88,7 @@ export default {
         { id: 799, title: 'Bridge', rating: '16+', time: '2h 1m', tags: ['Horror', 'Thriller', 'trending']},
         { id: 760, title: 'Tower Girl', rating: '18+', time: '1h 30m', tags: ['Romance', 'Thriller', 'trending']},
       ],
-      movie_details: { id: 781, title: 'Avengers', rating: '16+', time: '2h 1m', tags: ['Asian Action', 'Suspense']},
+      movie_details: { id: 721, title: 'Interstellar', rating: '16+', time: '2h 1m', tags: ['Asian Action', 'Suspense', 'recent']},
       openMovieId: null, 
     }
   },

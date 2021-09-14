@@ -48,14 +48,21 @@ export default {
 .card-info {
     position: absolute !important;
     z-index: 99;
-    transform: translate(-50px, -120px);
-    width: 400px;
     box-shadow: 0px 1px 10px 0px fade(@gray, 40%);
 
     // max-width: 300px;
     transition: all 0.4s ease;
     cursor: pointer;
     // position: absolute !important;
+
+    transform: translate(20px, -120px);
+    width: calc(100vw - 50px);
+
+    @media (min-width: @sm) {
+        transform: translate(-50px, -120px);
+        width: 400px;
+        
+    }
 
     .uk-card-media {
         overflow: hidden;
@@ -108,7 +115,7 @@ export default {
             p {
                 margin-right: 5px;
                 text-transform: capitalize;
-                
+
                 &::after {
                     content: '·';
                     margin-left: 5px;
